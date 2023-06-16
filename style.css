@@ -26,3 +26,14 @@ section {
 section .radio {
     margin-top: 10px;
 }
+
+section button {
+    border: none;
+    border: 1px solid #555;
+    padding: 10px;
+    transition: .2s ease-in-out;
+}
+
+section button:active {
+    background-color: #EEE;
+}
