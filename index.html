@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Radio</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <nav>
@@ -17,9 +18,23 @@
         </div>
         <div class="text">
             <p>Your best Classic and Hit of all time with Baloney Radio</p>
+            <br>
+            <div id="current-track"></div>
         </div>
     </section>
     
-    
+    <script>
+        $(document).ready(function() {
+            setInterval(getCurrentTrack, 5000); // Actualise le titre toutes les 5 secondes
+
+            function getCurrentTrack() {
+                $.getJSON('http://localhost:8000/status-json.xsl', function(data) {
+                    var title = data.icestats.source.title;
+                    $('#current-track').text(title);
+                });
+            }
+        });
+    </script>
+
 </body>
 </html>
