@@ -13,12 +13,28 @@
     </nav>
     <section>
         <div class="radio">
-            <audio src="http://192.168.1.77:8000/mystream.mp3" controls autoplay></audio>
+            <audio id="myAudio" src="http://192.168.1.77:8000/mystream.mp3"></audio>
         </div>
         <div class="text">
             <p>Your best Classic and Hit of all time with Baloney Radio</p>
+            <button onclick="playAudio()">PLAY</button>
+            <button onclick="pauseAudio()">PAUSE</button>
         </div>
     </section>
+
+    
+
+<script>
+  var audio = document.getElementById("myAudio");
+
+  function playAudio() {
+    audio.play();
+  }
+
+  function pauseAudio() {
+    audio.pause();
+  }
+</script>
     
 </body>
 </html>
