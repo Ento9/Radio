@@ -27,3 +27,7 @@ section .radio {
     margin-top: 10px;
 }
 
+section #current-track {
+    color: #b00000;
+    text-decoration: underline;
+}
