@@ -25,21 +25,18 @@
     </section>
     
     <script>
-            $(document).ready(function() {
-    var icecastUrl = 'http://192.168.1.77:8000/status-json.xsl';
+                    $(document).ready(function() {
+            setInterval(getCurrentTrack, 5000); // Actualise le titre toutes les 5 secondes
 
-    fetch(icecastUrl)
-        .then(response => response.json())
-        .then(data => {
-            var title = data.icestats.source.title;
-            $('#current-track').text(title);
-        })
-        .catch(error => {
-            console.error('Une erreur s\'est produite lors de la récupération des données JSON:', error);
+            function getCurrentTrack() {
+                $.getJSON('https://192.168.1.77:8000/status-json.xsl', function(data) {
+                    var title = data.icestats.source.title;
+                    $('#current-track').text(title);
+                }).fail(function() {
+                    $('#current-track').text('Erreur lors de la récupération des informations');
+                });
+            }
         });
-});
-
-
     </script>
 
 </body>
